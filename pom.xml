@@ -85,4 +85,5 @@
     </execution>
   </executions>
 </plugin>
+  </build>
 </project>
