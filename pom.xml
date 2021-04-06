@@ -4,14 +4,13 @@
   <groupId>com.mycompany.app</groupId>
   <artifactId>my-app</artifactId>
   <version>1</version>
-  <build>
     <plugin>
      <groupId>org.codehaus.mojo</groupId>
      <artifactId>exec-maven-plugin</artifactId>
      <version>1.6.0</version>
-  <executions>
+     <executions>
       <!-- Remove existing image from local repo -->
-    <execution>
+     <execution>
       <id>docker-clean</id>
       <phase>install</phase>
       <goals>
@@ -85,5 +84,4 @@
     </execution>
   </executions>
 </plugin>
-  </build>
 </project>
