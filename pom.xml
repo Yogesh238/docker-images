@@ -4,7 +4,6 @@
   <groupId>com.mycompany.app</groupId>
   <artifactId>my-app</artifactId>
   <version>1</version>
-  <build>
   <plugins>
     <plugin>
      <groupId>org.codehaus.mojo</groupId>
@@ -87,5 +86,4 @@
   </executions>
 </plugin>
     </plugins>
-  </build>
 </project>
