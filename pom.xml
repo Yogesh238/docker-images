@@ -1,3 +1,9 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <version>1</version>
 <plugin>
         <groupId>com.spotify</groupId>
              <artifactId>dockerfile-maven-plugin</artifactId>
@@ -15,3 +21,4 @@
                  <tag>${project.version}</tag>
              </configuration>
          </plugin>
+</project>
