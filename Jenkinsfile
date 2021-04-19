@@ -25,14 +25,14 @@ pipeline {
         stage('Building our image') { 
             steps { 
                 
-                sh 'docker build -t yogeshcloudtechner/assignment:maven.${BUILD_NUMBER} -f Dockerfile .'
+                sh 'docker build -t yogeshcloudtechner/assignment:${BUILD_NUMBER} -f Dockerfile .'
             } 
         }
           stage('Anchore scanner')
         {
             steps {
                   sh 'chmod +rw /tmp'
-                  sh 'curl -s https://ci-tools.anchore.io/inline_scan-latest | bash -s -- -p yogeshcloudtechner/assignment:maven.${BUILD_NUMBER}'
+                  sh 'curl -s https://ci-tools.anchore.io/inline_scan-latest | bash -s -- -p yogeshcloudtechner/assignment:${BUILD_NUMBER}'
                       
             }
         }
