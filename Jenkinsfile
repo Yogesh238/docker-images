@@ -1,0 +1,40 @@
+pipeline { 
+    environment { 
+        registry = "yogeshcloudtechner/assignment" 
+        registryCredential = 'docker' 
+        dockerImage = '' 
+    }
+    agent any 
+    stages { 
+         stage ("Docker linting") {
+         agent {
+            docker {
+               image 'hadolint/hadolint:latest-debian'
+            }
+         }
+         steps {
+            sh 'hadolint Dockerfile | tee -a      ms1_docker_lint.txt'
+             sh 'cat ms1_docker_lint.txt'
+         }
+         post {
+          always {
+            archiveArtifacts 'ms1_docker_lint.txt'
+          }
+      }
+  }      
+        stage('Building our image') { 
+            steps { 
+                
+                sh 'docker build -t yogeshcloudtechner/assignment:maven.${BUILD_NUMBER} -f Dockerfile .'
+            } 
+        }
+          stage('Anchore scanner')
+        {
+            steps {
+                  sh 'chmod +rw /tmp'
+                  sh 'curl -s https://ci-tools.anchore.io/inline_scan-latest | bash -s -- -p yogeshcloudtechner/assignment:maven.${BUILD_NUMBER}'
+                      
+            }
+        }
+    }
+}
